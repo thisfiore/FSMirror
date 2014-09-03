@@ -51,6 +51,23 @@
     [_controlView setHidden:!_controlView.hidden];
 }
 
+- (IBAction)PrototypeMenu:(id)sender {
+    
+    //CHANGE THIS WITH YOUR IP ADDRESS
+    
+    NSString *fieldUrl = @"192.168.1.95:8000";
+    
+    NSString *combinedUrl = [NSString stringWithFormat:@"%@%@", @"http://", fieldUrl];
+    NSLog(@"%@", combinedUrl);
+    
+    int len = (int)[fieldUrl length];
+    if (len != 0) {
+        [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:combinedUrl]]];
+        _controlView.hidden = YES;
+    }
+    [sender resignFirstResponder];
+    
+}
 
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
